@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Files | Mecha4</title>
+  <meta name="description" content="Mecha4, a 3D-printed robotic fish for MEC 482 Mechatronics at Abu Dhabi University.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="index.html"><svg viewBox="0 0 30 18" aria-hidden="true"><path d="M2 9 C6 2 16 1 22 5 L28 1 L28 17 L22 13 C16 17 6 16 2 9Z" fill="#f59a24"/><circle cx="8" cy="7.5" r="1.4" fill="#082230"/></svg><span data-config="name">Mecha4</span></a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
+      <ul class="nav-links" id="nav">
+        <li><a href="index.html">Simulator</a></li>
+        <li><a href="design.html">Design</a></li>
+        <li><a href="waterproofing.html">Waterproofing</a></li>
+        <li><a href="files.html">Files</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+    <section class="water page-head">
+      <div class="wrap">
+        <h1>Files</h1>
+        <p class="lede">STEP files open in Inventor. STL files go straight into your slicer.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="filters" id="filters" role="group" aria-label="Filter by type"></div>
+        <ul class="file-list" id="file-list"></ul>
+        <div class="empty" id="files-empty" hidden>
+          <h3>No files listed yet</h3>
+          <p>Upload a file to the <code>files</code> folder, then add a line for it in <code>site-config.js</code>.</p>
+        </div>
+        <p class="note" style="margin-top:28px">To add your own files (Inventor parts, Arduino code, reports): upload them to the <code>files</code> folder on GitHub, then add one line per file to the <code>files</code> list in <code>site-config.js</code>.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span><span data-config="course">MEC 482 Mechatronics</span>, <span data-config="school">Abu Dhabi University</span>, <span data-config="term">Fall 2026</span></span>
+      <a data-config-href="repo" href="#">Source on GitHub</a>
+    </div>
+  </footer>
+
+  <script src="site-config.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>

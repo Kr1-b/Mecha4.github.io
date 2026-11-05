@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Design | Mecha4</title>
+  <meta name="description" content="Mecha4, a 3D-printed robotic fish for MEC 482 Mechatronics at Abu Dhabi University.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="index.html"><svg viewBox="0 0 30 18" aria-hidden="true"><path d="M2 9 C6 2 16 1 22 5 L28 1 L28 17 L22 13 C16 17 6 16 2 9Z" fill="#f59a24"/><circle cx="8" cy="7.5" r="1.4" fill="#082230"/></svg><span data-config="name">Mecha4</span></a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
+      <ul class="nav-links" id="nav">
+        <li><a href="index.html">Simulator</a></li>
+        <li><a href="design.html">Design</a></li>
+        <li><a href="waterproofing.html">Waterproofing</a></li>
+        <li><a href="files.html">Files</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+    <section class="water page-head">
+      <div class="wrap">
+        <h1>Design</h1>
+        <p class="lede">New parts added to the existing body, crank and tail. All of them are STEP files you can open in Inventor.</p>
+
+        <div class="part-tabs" id="part-tabs" role="tablist" aria-label="Parts"></div>
+        <div class="viewer" id="part-panel" role="tabpanel">
+          <div class="part-stage"><img id="part-img" src="assets/parts/assembly-exploded.png" alt=""></div>
+          <div class="part-info">
+            <h3 id="part-title"></h3>
+            <p id="part-text"></p>
+            <dl class="specs" id="part-specs"></dl>
+            <a class="btn-solid" id="part-dl" href="#" download>Download STEP</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <h2>Electronics</h2>
+        <p>Select a block to see what it does.</p>
+        <ol class="chain" id="chain" role="tablist" aria-label="Electronics chain"></ol>
+        <div class="chain-detail" id="chain-detail" role="tabpanel" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap two-col">
+        <div>
+          <h2>How it fits together</h2>
+          <!-- EDIT: describe your final layout once the parts are in the Inventor assembly -->
+          <p>The dry box replaces the solid block in the current body. The tail crank shaft leaves through the rear gland, so the existing crank and tail keep working as in the dynamic simulation.</p>
+          <p>Each fin hub slides onto a 3 mm D-shaft and is locked with an M3 set screw on the flat. Inside, the shaft couples to an SG90 servo horn mounted on the printed bracket.</p>
+          <p class="note">In Inventor: open each STEP with File → Open, save it as a part, then place it in <code>fish flapping.iam</code>. Add a revolute joint on each shaft axis and drive it in Dynamic Simulation.</p>
+        </div>
+        <div>
+          <h2>Team</h2>
+          <ul class="team" id="team"></ul>
+          <p style="margin-top:16px">Supervised by <span data-config="instructor">Dr. Claudio Vignola</span>.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span><span data-config="course">MEC 482 Mechatronics</span>, <span data-config="school">Abu Dhabi University</span>, <span data-config="term">Fall 2026</span></span>
+      <a data-config-href="repo" href="#">Source on GitHub</a>
+    </div>
+  </footer>
+
+  <script src="site-config.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
