@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mecha4 | Robotic fish</title>
+  <meta name="description" content="Mecha4, a 3D-printed robotic fish for MEC 482 Mechatronics at Abu Dhabi University.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="./"><svg viewBox="0 0 30 18" aria-hidden="true"><path d="M2 9 C6 2 16 1 22 5 L28 1 L28 17 L22 13 C16 17 6 16 2 9Z" fill="#f59a24"/><circle cx="8" cy="7.5" r="1.4" fill="#082230"/></svg><span data-config="name">Mecha4</span></a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
+      <ul class="nav-links" id="nav">
+        <li><a href="simulator.html">Simulator</a></li>
+        <li><a href="design.html">Design</a></li>
+        <li><a href="waterproofing.html">Waterproofing</a></li>
+        <li><a href="files.html">Files</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+    <section class="water hero">
+      <div class="wrap">
+        <h1 data-config="name">Mecha4</h1>
+        <p class="lede" data-config="tagline">A 3D-printed robotic fish.</p>
+
+        <div class="sim">
+          <div>
+            <div class="screen">
+              <div class="caption"><span>Top view</span><span>Click the pool, then use the arrow keys</span></div>
+              <canvas id="tank" tabindex="0" aria-label="Top view of the fish in a test pool. Focus it and use arrow keys to steer and pitch, W and S for tail speed."></canvas>
+            </div>
+            <div class="screen" style="margin-top:14px">
+              <div class="caption"><span>Side view, depth</span></div>
+              <canvas id="side" aria-label="Side view showing the fish's depth and pitch"></canvas>
+            </div>
+          </div>
+
+          <div class="sim-side">
+            <div class="controls">
+              <div class="field">
+                <label for="in-rpm">Tail crank speed <output id="out-rpm"></output></label>
+                <input id="in-rpm" type="range" min="0" max="150" step="5" value="90">
+              </div>
+              <div class="field">
+                <label for="in-fin">Pectoral fins <output id="out-fin"></output></label>
+                <input id="in-fin" type="range" min="-30" max="30" step="1" value="0">
+              </div>
+              <div class="field">
+                <label for="in-rud">Rudder <output id="out-rud"></output></label>
+                <input id="in-rud" type="range" min="-35" max="35" step="1" value="0">
+              </div>
+              <label class="keys" style="display:flex;gap:8px;align-items:center;cursor:pointer">
+                <input type="checkbox" id="in-ballast" checked> Ballast trimmed (untick to see it float up)
+              </label>
+              <div class="btn-row">
+                <button class="btn" type="button" id="btn-center">Center fins and rudder</button>
+                <button class="btn" type="button" id="btn-reset">Reset</button>
+              </div>
+              <p class="keys"><kbd>←</kbd> <kbd>→</kbd> rudder, <kbd>↑</kbd> <kbd>↓</kbd> fins, <kbd>W</kbd> <kbd>S</kbd> crank speed, <kbd>Space</kbd> stop</p>
+            </div>
+            <dl class="readouts">
+              <div><dt>Speed</dt><dd id="r-speed">—</dd></div>
+              <div><dt>Heading</dt><dd id="r-heading">—</dd></div>
+              <div><dt>Depth</dt><dd id="r-depth">—</dd></div>
+              <div><dt>Tail beat</dt><dd id="r-beat">—</dd></div>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <h2>Three motions, three parts</h2>
+        <img src="fish-side.png" alt="Side view of the robotic fish" class="fish-banner">
+        <ul class="motions">
+          <li><strong>Forward: the tail</strong><span>A motor turns the crank, and the crank flaps the tail side to side. One crank turn is one tail beat.</span></li>
+          <li><strong>Up and down: pectoral fins</strong><span>One servo tilts both side fins through a pushrod. Nose-up fins lift the fish as it swims, nose-down fins drive it deeper.</span></li>
+          <li><strong>Left and right: the rudder</strong><span>A second servo turns the dorsal fin, which works as a rudder and yaws the fish toward the side it points.</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap two-col">
+        <div>
+          <h2>Built to stay dry</h2>
+          <p>The Arduino, servos, motor and battery all live in one sealed tube hidden inside the fish. The skin around it floods with water on purpose. Only three thin shafts leave the tube, and each passes through two greased O-rings.</p>
+          <p>The simulator's physics are simplified, but the trends are right: thrust grows with the square of tail-beat frequency, and the fins only change depth while the fish is moving.</p>
+        </div>
+        <div>
+          <ul class="routes">
+            <li><a href="design.html"><strong>Design</strong><span class="desc">The new parts, their sizes, and the electronics inside.</span><span class="arrow" aria-hidden="true">›</span></a></li>
+            <li><a href="waterproofing.html"><strong>Waterproofing</strong><span class="desc">How each seal works, with O-ring and buoyancy calculators.</span><span class="arrow" aria-hidden="true">›</span></a></li>
+            <li><a href="files.html"><strong>Files</strong><span class="desc">STEP files for Inventor and STL files for printing.</span><span class="arrow" aria-hidden="true">›</span></a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span><span data-config="course">MEC 482 Mechatronics</span>, <span data-config="school">Abu Dhabi University</span>, <span data-config="term">Fall 2026</span></span>
+      <a data-config-href="repo" href="#">Source on GitHub</a>
+    </div>
+  </footer>
+
+  <script src="site-config.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>

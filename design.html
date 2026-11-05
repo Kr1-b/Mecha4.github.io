@@ -14,10 +14,10 @@
 <body>
   <header class="site-header">
     <div class="wrap">
-      <a class="brand" href="index.html"><svg viewBox="0 0 30 18" aria-hidden="true"><path d="M2 9 C6 2 16 1 22 5 L28 1 L28 17 L22 13 C16 17 6 16 2 9Z" fill="#f59a24"/><circle cx="8" cy="7.5" r="1.4" fill="#082230"/></svg><span data-config="name">Mecha4</span></a>
+      <a class="brand" href="./"><svg viewBox="0 0 30 18" aria-hidden="true"><path d="M2 9 C6 2 16 1 22 5 L28 1 L28 17 L22 13 C16 17 6 16 2 9Z" fill="#f59a24"/><circle cx="8" cy="7.5" r="1.4" fill="#082230"/></svg><span data-config="name">Mecha4</span></a>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
       <ul class="nav-links" id="nav">
-        <li><a href="index.html">Simulator</a></li>
+        <li><a href="simulator.html">Simulator</a></li>
         <li><a href="design.html">Design</a></li>
         <li><a href="waterproofing.html">Waterproofing</a></li>
         <li><a href="files.html">Files</a></li>
@@ -29,11 +29,11 @@
     <section class="water page-head">
       <div class="wrap">
         <h1>Design</h1>
-        <p class="lede">New parts added to the existing body, crank and tail. All of them are STEP files you can open in Inventor.</p>
+        <p class="lede">A fish-shaped skin around a sealed electronics tube. Every part is a STEP file you can open in Inventor.</p>
 
         <div class="part-tabs" id="part-tabs" role="tablist" aria-label="Parts"></div>
         <div class="viewer" id="part-panel" role="tabpanel">
-          <div class="part-stage"><img id="part-img" src="assembly-exploded.png" alt=""></div>
+          <div class="part-stage"><img id="part-img" src="fish-exterior.png" alt=""></div>
           <div class="part-info">
             <h3 id="part-title"></h3>
             <p id="part-text"></p>
@@ -53,14 +53,56 @@
       </div>
     </section>
 
+    <section class="section" id="parts-list">
+      <div class="wrap">
+        <h2>What you need</h2>
+        <p>Your kit covers the Arduino, one servo, the leak sensor and the wiring. These are the parts to buy for the fish.</p>
+        <div class="two-col">
+          <div>
+            <h3>Electronics</h3>
+            <table class="bom">
+              <tr><th>Part</th><th>Qty</th><th>Have it?</th></tr>
+              <tr><td>Arduino Uno (or a Nano, which is smaller)</td><td>1</td><td>Kit</td></tr>
+              <tr><td>MG90S metal-gear micro servo</td><td>2</td><td>Kit has 1 SG90; buy 2 MG90S</td></tr>
+              <tr><td>N20 gear motor, 6 V, 150–300 rpm, 3 mm D shaft</td><td>1</td><td>Buy</td></tr>
+              <tr><td>DRV8833 (or L9110S) motor driver</td><td>1</td><td>Buy</td></tr>
+              <tr><td>2S LiPo 7.4 V, ~1000 mAh, max 70 × 35 × 18 mm, plus charger</td><td>1</td><td>Buy</td></tr>
+              <tr><td>5 V 3 A UBEC / buck converter</td><td>1</td><td>Buy</td></tr>
+              <tr><td>FC-28 soil moisture probe (used as a leak sensor)</td><td>1</td><td>Kit</td></tr>
+              <tr><td>Reed switch + relay module (switch it on with a magnet, no hole)</td><td>1</td><td>Relay in kit; buy reed switch</td></tr>
+              <tr><td>Jumper wires, resistors, LEDs</td><td>—</td><td>Kit</td></tr>
+            </table>
+          </div>
+          <div>
+            <h3>Mechanical</h3>
+            <table class="bom">
+              <tr><th>Part</th><th>Qty</th></tr>
+              <tr><td>NBR O-ring 70 mm ID × 2.5 mm (end cap)</td><td>2 + spares</td></tr>
+              <tr><td>NBR O-ring 3 mm ID × 1.5 mm (shaft glands)</td><td>8 + spares</td></tr>
+              <tr><td>3 mm stainless rod (file a flat on it for the D-shaft)</td><td>300 mm</td></tr>
+              <tr><td>3–3 mm rigid shaft coupler (motor to tail shaft)</td><td>1</td></tr>
+              <tr><td>1.5 mm steel wire for the fin pushrod</td><td>50 mm</td></tr>
+              <tr><td>M3 screws, M3 heat-set inserts, M3 set screws</td><td>~15 each</td></tr>
+              <tr><td>3 mm steel pins (or filament) for the seam</td><td>6</td></tr>
+              <tr><td>Silicone grease, silica gel pack, epoxy coating</td><td>—</td></tr>
+              <tr><td>Ballast: steel nuts or lead shot</td><td>~370 g</td></tr>
+            </table>
+          </div>
+        </div>
+        <h3 style="margin-top:32px">Does it need gears?</h3>
+        <p>No custom gears. The N20 motor and the servos already have gearboxes inside. The crank turns the motor's spin into the tail's back-and-forth swing, and a short pushrod links the fin servo to the fin shaft.</p>
+        <h3 style="margin-top:24px">Which kit parts won't work underwater</h3>
+        <p>The ultrasonic sensor, PIR, IR obstacle sensor and the displays are useful for bench testing only. Ultrasonic and IR don't work through water and the tube wall, and radio barely does either. So run the fish on a pre-programmed swim pattern, or use a thin tether to the kit's joystick.</p>
+      </div>
+    </section>
+
     <section class="section">
       <div class="wrap two-col">
         <div>
           <h2>How it fits together</h2>
-          <!-- EDIT: describe your final layout once the parts are in the Inventor assembly -->
-          <p>The dry box replaces the solid block in the current body. The tail crank shaft leaves through the rear gland, so the existing crank and tail keep working as in the dynamic simulation.</p>
-          <p>Each fin hub slides onto a 3 mm D-shaft and is locked with an M3 set screw on the flat. Inside, the shaft couples to an SG90 servo horn mounted on the printed bracket.</p>
-          <p class="note">In Inventor: open each STEP with File → Open, save it as a part, then place it in <code>fish flapping.iam</code>. Add a revolute joint on each shaft axis and drive it in Dynamic Simulation.</p>
+          <p>The electronics mount on the sled, the sled slides into the dry pod, and the end cap plugs in behind it. The pod drops into the bottom skin half, the top half closes over it, and three screws from the belly hold it shut.</p>
+          <p>The three moving shafts go in last, from outside: the rudder shaft from the top, the fin cross shaft through both sides and the fin lever, and the tail shaft through the end cap into the crank.</p>
+          <p class="note">In Inventor: open <code>fish_assembly.step</code> with File → Open to get every part in place. To simulate, add revolute joints on the rudder shaft (vertical), fin shaft (sideways), tail shaft (lengthwise) and tail hinge pin, plus a slot joint between the crank pin and the tail lever.</p>
         </div>
         <div>
           <h2>Team</h2>

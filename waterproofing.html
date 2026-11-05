@@ -14,10 +14,10 @@
 <body>
   <header class="site-header">
     <div class="wrap">
-      <a class="brand" href="index.html"><svg viewBox="0 0 30 18" aria-hidden="true"><path d="M2 9 C6 2 16 1 22 5 L28 1 L28 17 L22 13 C16 17 6 16 2 9Z" fill="#f59a24"/><circle cx="8" cy="7.5" r="1.4" fill="#082230"/></svg><span data-config="name">Mecha4</span></a>
+      <a class="brand" href="./"><svg viewBox="0 0 30 18" aria-hidden="true"><path d="M2 9 C6 2 16 1 22 5 L28 1 L28 17 L22 13 C16 17 6 16 2 9Z" fill="#f59a24"/><circle cx="8" cy="7.5" r="1.4" fill="#082230"/></svg><span data-config="name">Mecha4</span></a>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
       <ul class="nav-links" id="nav">
-        <li><a href="index.html">Simulator</a></li>
+        <li><a href="simulator.html">Simulator</a></li>
         <li><a href="design.html">Design</a></li>
         <li><a href="waterproofing.html">Waterproofing</a></li>
         <li><a href="files.html">Files</a></li>
@@ -30,16 +30,16 @@
       <div class="wrap two-col">
         <div>
           <h1>Waterproofing</h1>
-          <p class="lede">Water has three ways into the dry box. Each one gets its own seal.</p>
+          <p class="lede">The fish skin floods on purpose. Only the dry pod inside has to stay dry, and water has three ways into it.</p>
           <ul class="seals">
-            <li><span class="mark" aria-hidden="true">1</span><strong>The lid</strong><span>A 2 mm O-ring cord sits in a groove on the flange. Ten M3 screws clamp the flat lid down and squeeze it about 25%.</span></li>
+            <li><span class="mark" aria-hidden="true">1</span><strong>The end cap</strong><span>The cap plugs into the tube with two 70 × 2.5 mm O-rings around its edge, squeezed about 20%. Water pressure pushes them harder into the gap, so this kind of seal gets tighter the deeper it goes. Four M3 screws just stop the cap sliding out.</span></li>
             <li><span class="mark" aria-hidden="true">2</span><strong>Fin and rudder shafts</strong><span>Each 3 mm shaft runs through a boss with two internal O-ring grooves. The shafts only swing back and forth, so greased O-rings hold well at pool depth.</span></li>
-            <li><span class="mark" aria-hidden="true">3</span><strong>Tail crank shaft</strong><span>This one spins nonstop, which wears O-rings. Use the rear gland to start; if it weeps, switch to a magnetic coupling so no shaft passes through the wall at all.</span></li>
+            <li><span class="mark" aria-hidden="true">3</span><strong>Tail crank shaft</strong><span>This one spins nonstop, which wears O-rings. Grease it well and check it after every test. If it starts to weep, switch to a magnetic coupling so no shaft passes through the cap at all.</span></li>
           </ul>
         </div>
         <figure class="figure">
-          <img src="gland-section.png" alt="Dry box cut in half through the fin shaft axis, showing two O-ring grooves inside each side gland and the servo brackets">
-          <figcaption>Section through the fin shaft axis. Each side gland has two O-ring grooves; the servo brackets hold the SG90s on the same axis.</figcaption>
+          <img src="pod-section.png" alt="Dry pod and end cap cut in half, showing the two O-ring grooves on the end cap and the grooves inside the shaft glands">
+          <figcaption>Pod and end cap cut in half. Two O-ring grooves run around the end cap plug, and each shaft gland has two grooves inside its bore.</figcaption>
         </figure>
       </div>
     </section>
@@ -51,16 +51,16 @@
         <div class="calc" id="oring">
           <div class="inputs">
             <div class="btn-row">
-              <button class="btn" type="button" data-preset="face">Lid face seal</button>
+              <button class="btn" type="button" data-preset="face">End cap</button>
               <button class="btn" type="button" data-preset="shaft">Shaft gland</button>
             </div>
-            <div class="field"><label for="o-d">Cord diameter (mm)</label><input id="o-d" type="number" step="0.1" min="0.5" value="2.0"></div>
-            <div class="field"><label for="o-h">Groove depth (mm)</label><input id="o-h" type="number" step="0.1" min="0.2" value="1.5"></div>
-            <div class="field"><label for="o-b">Groove width (mm)</label><input id="o-b" type="number" step="0.1" min="0.5" value="2.6"></div>
+            <div class="field"><label for="o-d">Cord diameter (mm)</label><input id="o-d" type="number" step="0.1" min="0.5" value="2.5"></div>
+            <div class="field"><label for="o-h">Gap the ring fills (mm)</label><input id="o-h" type="number" step="0.05" min="0.2" value="2.0"></div>
+            <div class="field"><label for="o-b">Groove width (mm)</label><input id="o-b" type="number" step="0.1" min="0.5" value="3.4"></div>
             <div class="field">
               <label for="o-type">Seal type</label>
               <select id="o-type" style="font:inherit;padding:8px;border-radius:6px;background:#082230;color:#eaf3f4;border:1px solid #1d5068">
-                <option value="static">Static (lid)</option>
+                <option value="static">Static (end cap)</option>
                 <option value="dynamic">Moving shaft</option>
               </select>
             </div>
@@ -81,13 +81,13 @@
     <section class="section">
       <div class="wrap">
         <h2>Will it float or sink?</h2>
-        <p>A sealed box full of air floats hard. You want the finished fish just barely positive, so it rises on its own if the battery dies. The defaults come from the CAD: the dry box and lid displace about 948 cm³, and printed solid in PETG they weigh about 400 g.</p>
+        <p>A sealed tube full of air floats hard. You want the finished fish just barely positive, so it rises on its own if the battery dies. The defaults come from the CAD: the pod plus all the printed parts displace about 1,400 cm³ and weigh about 850 g printed solid in PETG. The electronics add about 185 g.</p>
         <div class="calc" id="buoy">
           <div class="inputs">
-            <div class="field"><label for="b-vol">Displaced volume (cm³)</label><input id="b-vol" type="number" min="0" value="948"></div>
-            <div class="field"><label for="b-print">Printed parts (g)</label><input id="b-print" type="number" min="0" value="398"></div>
-            <div class="field"><label for="b-elec">Electronics and battery (g)</label><input id="b-elec" type="number" min="0" value="130"></div>
-            <div class="field"><label for="b-other">Body shell, tail, crank (g)</label><input id="b-other" type="number" min="0" value="0"></div>
+            <div class="field"><label for="b-vol">Displaced volume (cm³)</label><input id="b-vol" type="number" min="0" value="1407"></div>
+            <div class="field"><label for="b-print">Printed parts (g)</label><input id="b-print" type="number" min="0" value="851"></div>
+            <div class="field"><label for="b-elec">Electronics and battery (g)</label><input id="b-elec" type="number" min="0" value="185"></div>
+            <div class="field"><label for="b-other">Ballast and extras (g)</label><input id="b-other" type="number" min="0" value="0"></div>
             <div class="field">
               <label for="b-water">Water</label>
               <select id="b-water" style="font:inherit;padding:8px;border-radius:6px;background:#082230;color:#eaf3f4;border:1px solid #1d5068">
@@ -113,9 +113,9 @@
         <div>
           <h2>Printing for water</h2>
           <ul class="plain-list">
-            <li>Print the dry box and lid in PETG or ASA, not PLA (PLA softens and absorbs water over time).</li>
-            <li>Use at least 5 walls and 100% infill around the flange and the glands. Normal FDM walls leak through the layer lines otherwise.</li>
-            <li>Print the box upright so the flange face is the last, smoothest layer. Lightly sand the face flat.</li>
+            <li>Print the pod and end cap in PETG or ASA, not PLA (PLA softens and absorbs water over time). The skin and fins flood anyway, so PETG is enough there.</li>
+            <li>Print the pod standing on its open end with at least 5 walls, and use 100% infill on the end cap and glands. Normal FDM walls leak through the layer lines otherwise.</li>
+            <li>Sand the inside of the tube mouth smooth where the end cap O-rings slide, then wipe on a thin film of silicone grease.</li>
             <li>Coat the outside with a thin layer of epoxy (e.g. XTC-3D) to close the layer lines.</li>
             <li>Ream the 3 mm shaft bores with a 3 mm drill bit after printing so the shafts turn freely.</li>
             <li>A resin printer gives watertight walls and accurate O-ring grooves straight off the printer, if you can get one.</li>
@@ -124,8 +124,8 @@
         <div>
           <h2>Leak test before electronics</h2>
           <ol class="steps">
-            <li>Assemble the box, O-rings, shafts and lid with no electronics inside. Put a dry tissue in the box.</li>
-            <li>Tighten the lid screws in a cross pattern, a little at a time.</li>
+            <li>Assemble the pod, end cap, O-rings and shafts with no electronics inside. Put a dry tissue in the tube.</li>
+            <li>Push the end cap in until it seats, then fit the four M3 screws.</li>
             <li>Weigh it down and hold it at the bottom of a bucket for 30 minutes, turning the shafts by hand.</li>
             <li>Open it and check the tissue. Any wet spot shows you which seal leaked.</li>
             <li>Fix that seal and repeat until the tissue stays dry, then fit the electronics with a silica gel pack.</li>

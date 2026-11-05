@@ -13,7 +13,7 @@
   document.querySelectorAll("[data-config-href]").forEach((el) => { const v = SITE[el.dataset.configHref]; if (v) el.href = v; });
   if (SITE.name) document.title = document.title.replace("Mecha4", SITE.name);
 
-  const page = location.pathname.split("/").pop() || "index.html";
+  const page = location.pathname.split("/").pop() || "simulator.html";
   document.querySelectorAll(".nav-links a").forEach((a) => { if (a.getAttribute("href") === page) a.setAttribute("aria-current", "page"); });
   const toggle = document.querySelector(".nav-toggle"), links = document.querySelector(".nav-links");
   if (toggle && links) toggle.addEventListener("click", () => {
@@ -126,7 +126,7 @@
       ctx.fillStyle = COL.body; ctx.fill(); ctx.strokeStyle = COL.ink; ctx.stroke();
       // dry box outline seen through the shell
       ctx.strokeStyle = "rgba(11,34,48,0.35)"; ctx.setLineDash([0.008, 0.006]);
-      ctx.strokeRect(-0.075, -0.04, 0.15, 0.08); ctx.setLineDash([]);
+      ctx.strokeRect(-0.085, -0.042, 0.2, 0.084); ctx.setLineDash([]);
       // eye
       ctx.fillStyle = COL.ink; [1, -1].forEach((sd) => { ctx.beginPath(); ctx.arc(0.16, sd * 0.03, 0.007, 0, Math.PI * 2); ctx.fill(); });
       // rudder on top, rotated by its angle
@@ -289,7 +289,7 @@
       detail.querySelector("h3").textContent = SITE.system[i].title;
       detail.querySelector("p").textContent = SITE.system[i].text;
     }
-    select(1);
+    select(2);
   }
 
   const team = $("team");
@@ -306,7 +306,7 @@
   const oring = $("oring");
   if (oring) {
     const d = $("o-d"), h = $("o-h"), b = $("o-b"), type = $("o-type");
-    const presets = { face: [2.0, 1.5, 2.6, "static"], shaft: [1.5, 1.25, 2.0, "dynamic"] };
+    const presets = { face: [2.5, 2.0, 3.4, "static"], shaft: [1.5, 1.25, 2.0, "dynamic"] };
     document.querySelectorAll("[data-preset]").forEach((btn) => btn.addEventListener("click", () => {
       const [pd, ph, pb, pt] = presets[btn.dataset.preset];
       d.value = pd; h.value = ph; b.value = pb; type.value = pt; calc();
@@ -328,7 +328,7 @@
       else if (squeeze < lo) msg = "Too little squeeze. Make the groove shallower or use a thicker cord.";
       else if (squeeze > hi) msg = dyn ? "Too much squeeze for a moving shaft: high friction and the servo may stall. Deepen the groove." : "Too much squeeze: the lid will be hard to close and the ring can be cut. Deepen the groove.";
       else if (!okF) msg = "Squeeze is fine but the groove is too narrow for the squashed ring. Widen it.";
-      else msg = dyn ? "Good for a slow-moving shaft. Grease the O-rings with silicone grease." : "Good static seal. Tighten the lid screws evenly in a cross pattern.";
+      else msg = dyn ? "Good for a slow-moving shaft. Grease the O-rings with silicone grease." : "Good static seal. Grease the O-rings lightly before pushing the cap in.";
       $("o-verdict").textContent = msg;
       drawGroove(D, Hh, B, squeeze, okF);
     }
@@ -340,9 +340,9 @@
       else { ry = rx = D * S / 2; cy = top + gh - ry; }
       svg.innerHTML = `
         <rect x="20" y="${top - 26}" width="380" height="26" fill="#2a5a70"/>
-        <text x="30" y="${top - 9}" fill="#cfe3e8" font-size="13">Lid</text>
+        <text x="30" y="${top - 9}" fill="#cfe3e8" font-size="13">Tube wall</text>
         <path d="M20 ${top} H${cx - gw / 2} V${top + gh} H${cx + gw / 2} V${top} H400 V${top + gh + 50} H20 Z" fill="#3d6f84"/>
-        <text x="30" y="${top + gh + 34}" fill="#cfe3e8" font-size="13">Box flange</text>
+        <text x="30" y="${top + gh + 34}" fill="#cfe3e8" font-size="13">End cap / shaft</text>
         <ellipse cx="${cx}" cy="${cy}" rx="${rx}" ry="${ry}" fill="${squeeze <= 0 ? "#ff8f6b" : okF ? "#f59a24" : "#ff8f6b"}" stroke="#061b25" stroke-width="1.5"/>
         <line x1="${cx - gw / 2}" y1="${top + gh + 12}" x2="${cx + gw / 2}" y2="${top + gh + 12}" stroke="#cfe3e8"/>
         <text x="${cx}" y="${top + gh + 26}" fill="#cfe3e8" font-size="12" text-anchor="middle">${B.toFixed(1)} mm wide</text>
