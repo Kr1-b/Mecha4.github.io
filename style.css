@@ -79,7 +79,7 @@ code { font-size: 0.88em; background: rgba(127,127,127,.15); padding: 1px 5px; b
 /* ---------- dark water sections ---------- */
 .water {
   background-color: var(--deep);
-  background-image: url("assets/contours.svg");
+  background-image: url("contours.svg");
   background-size: 900px auto;
   color: var(--foam);
 }
