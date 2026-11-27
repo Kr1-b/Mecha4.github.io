@@ -92,7 +92,7 @@ One limit to test early: radio signals at 433 MHz travel only a short distance t
 * [Electronics and code](electronics.html)
 * [Build log with photos and videos](build-log.html)
 * [Files: STL parts and Arduino code](files.html)
-* [Source on GitHub](https://github.com/Kr1-b/Mecha4.guthub.io)
+* [Source on GitHub](https://github.com/Kr1-b/Mecha4.github.io)
 * [DabbleESP32 library (phone gamepad)](https://github.com/STEMpedia/DabbleESP32)
 * [AltSoftSerial library (radio on the UNO)](https://github.com/PaulStoffregen/AltSoftSerial)
 

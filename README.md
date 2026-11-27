@@ -2,7 +2,7 @@
 
 Website and files for our MEC 482 Mechatronics project at Abu Dhabi University (Fall 2026): a 3D-printed robotic fish with a crank and slotted-yoke tail drive, a rudder, two side fins, and phone control through an ESP32, an HC-12 radio and an Arduino UNO.
 
-Live site: https://kr1-b.github.io/Mecha4.guthub.io/
+Live site: https://kr1-b.github.io/Mecha4.github.io/
 
 | Folder | What is in it |
 | --- | --- |
