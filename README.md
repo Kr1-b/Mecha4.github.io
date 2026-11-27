@@ -13,4 +13,4 @@ Live site: https://kr1-b.github.io/Mecha4.github.io/
 | `cad/` | STL files for every printed part |
 | `code/` | Arduino code for the ESP32 transmitter and the UNO receiver |
 
-Team: Basil Ahmed, Talha, Hamad. Instructor: Dr. Claudio Vignola.
+Team: Basil Ahmed, Talha Munir, Hamad AlKaabi, Hamza Imtiaz. Instructor: Dr. Claudio Vignola.

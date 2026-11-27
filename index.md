@@ -17,7 +17,7 @@ description: Mecha4, a 3D-printed robotic fish for MEC 482 Mechatronics at Abu D
       <dt>Actuators</dt><dd>1 DC motor, 3 servos</dd>
       <dt>Control</dt><dd>Phone, ESP32, HC-12 radio, Arduino UNO</dd>
     </dl>
-    <p class="course">MEC 482 Mechatronics, Abu Dhabi University, Fall 2026<br>Instructor: Dr. Claudio Vignola<br>Team: Basil Ahmed, Talha, Hamad</p>
+    <p class="course">MEC 482 Mechatronics, Abu Dhabi University, Fall 2026<br>Instructor: Dr. Claudio Vignola<br>Team: Basil Ahmed, Talha Munir, Hamad AlKaabi, Hamza Imtiaz</p>
   </div>
   <figure class="tank">
     <model-viewer src="assets/model/robotic-fish.glb" poster="assets/img/assembly-rear.png" alt="3D model of the robotic fish with its tail mechanism moving" camera-controls autoplay animation-name="TailWag" camera-orbit="-35deg 68deg auto" field-of-view="21deg" shadow-intensity="0.5" exposure="1.05" interaction-prompt="none" touch-action="pan-y"></model-viewer>
