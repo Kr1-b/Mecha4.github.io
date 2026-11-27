@@ -1,0 +1,49 @@
+---
+title: Build log
+layout: default
+key: build-log
+description: Progress on the Mecha4 robotic fish - bench tests, CAD, first prints and what comes next.
+---
+
+<h1 class="page-title">Build log</h1>
+<p class="lede">What we built, in order. The newest step is at the bottom.</p>
+
+<ol class="log">
+  <li>
+    <time datetime="2026-11-19">19 November 2026</time>
+    <h3>Electronics bench test</h3>
+    <p>The ESP32, HC-12 radios, Arduino UNO, relay and servos were wired up on the bench and driven from the Dabble gamepad on a phone.</p>
+    <div class="pair">
+      <figure><video controls muted playsinline preload="none" poster="assets/video/bench-test-1.jpg"><source src="assets/video/bench-test-1.mp4" type="video/mp4"></video></figure>
+      <figure><video controls muted playsinline preload="none" poster="assets/video/bench-test-2.jpg"><source src="assets/video/bench-test-2.mp4" type="video/mp4"></video></figure>
+    </div>
+  </li>
+  <li>
+    <time datetime="2026-11-21">21 November 2026</time>
+    <h3>New body modelled in Inventor</h3>
+    <p>The fish was redesigned around an egg-shaped body, 224 mm long and 130 mm across, split into two halves. Every electronic part was placed in the model to check that it fits.</p>
+    <div class="pair">
+      <figure><img src="assets/img/photos/inventor-inside-1.jpg" alt="Inventor model with the top half transparent, showing servos, Arduino and cells, with 224 mm and 130 mm dimensions" loading="lazy"></figure>
+      <figure><img src="assets/img/photos/inventor-inside-2.jpg" alt="Second Inventor view of the electronics inside the body" loading="lazy"></figure>
+      <figure><img src="assets/img/photos/inventor-closed.jpg" alt="Inventor model of the closed body with servo windows" loading="lazy"></figure>
+      <figure><img src="assets/img/photos/inventor-halves.jpg" alt="Inventor render of the two body halves side by side" loading="lazy"></figure>
+    </div>
+  </li>
+  <li>
+    <time datetime="2026-11-24">24 November 2026</time>
+    <h3>First prints</h3>
+    <p>Both body halves and the tail parts came off the printer: the slotted yoke, the two link bars and the crank rod.</p>
+    <figure><img src="assets/img/photos/printed-parts.jpg" alt="Photo of the printed body halves with the yoke, link bars and crank rod" loading="lazy" style="width:min(100%, 420px)"></figure>
+  </li>
+  <li>
+    <time datetime="2026-11-27">27 November 2026</time>
+    <h3>Tail mechanism and control code</h3>
+    <p>The tail drive was finalised as a crank and slotted yoke hung on two link bars, and the radio control code was split into an ESP32 transmitter and an UNO receiver with a failsafe.</p>
+    <figure class="render"><img src="assets/img/assembly-front.png" alt="Render of the assembled fish from the front, with rudder and side fins" loading="lazy"></figure>
+  </li>
+  <li class="planned">
+    <span class="when">Next</span>
+    <h3>Assembly and water test</h3>
+    <p>Fit the electronics into the printed body, seal the joint between the halves, and run the first test in water. We will record swimming speed, turning radius and depth control here.</p>
+  </li>
+</ol>

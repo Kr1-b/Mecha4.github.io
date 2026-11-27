@@ -1,0 +1,96 @@
+---
+title: How it works
+layout: default
+key: how-it-works
+description: How the Mecha4 robotic fish moves - the crank and slotted-yoke tail drive, the rudder, the side fins and the two-part body.
+---
+
+<h1 class="page-title">How it works</h1>
+<p class="lede">Three jobs, three mechanisms. The tail pushes the fish forward, the rudder turns it, and the side fins tilt it up or down.</p>
+
+<figure class="render">
+  <img src="assets/img/exploded.png" alt="Exploded view of the fish: top and bottom body halves, rudder, one side fin, crank rod, slotted yoke and two link bars" loading="lazy">
+  <figcaption>Exploded view. The second side fin mirrors the one shown.</figcaption>
+</figure>
+
+<h2 id="tail">Tail drive</h2>
+<p>A DC motor sits at the back of the body. Its shaft drives a bent <span class="sw c-rod"></span>crank rod: the first part of the rod turns on the motor's axis, and the part after the bend is offset by 18 mm, so it travels round a 36 mm circle. That offset part runs through the slot in the <span class="sw c-yoke"></span>slotted yoke.</p>
+<p>The slot is 47 mm long and only lets the rod slide up and down. When the rod moves sideways, it carries the yoke with it. Two <span class="sw c-bar"></span>link bars hold the yoke behind the body. Each bar has a pin at both ends: one goes into a tab on the body, the other into the end of the yoke. The bars swing about the body tabs, so the yoke sweeps from side to side on a short arc instead of falling away.</p>
+
+<div class="pair wide-left">
+  <figure>
+    <video autoplay loop muted playsinline poster="assets/video/tail-wag.jpg">
+      <source src="assets/video/tail-wag.mp4" type="video/mp4">
+    </video>
+    <figcaption>One crank turn, looping.</figcaption>
+  </figure>
+  <figure>
+    <video autoplay loop muted playsinline poster="assets/video/tail-mechanism-inventor.jpg">
+      <source src="assets/video/tail-mechanism-inventor.mp4" type="video/mp4">
+    </video>
+    <figcaption>The same motion simulated in Inventor.</figcaption>
+  </figure>
+</div>
+
+<figure class="render">
+  <img src="assets/img/tail-cycle.png" alt="Four top views of the tail at crank angles 0, 90, 180 and 270 degrees, showing the yoke swinging 18 mm left and right" loading="lazy">
+  <figcaption>Seen from above. At 0° and 180° the yoke is at its widest, 18 mm to each side. At 90° and 270° it passes through the centre.</figcaption>
+</figure>
+
+<p>The motor is switched by a relay, so the tail either runs at full speed or stops. The beat rate is set by the motor speed: one crank turn gives one full left-right beat.</p>
+
+<h2 id="steering">Steering and depth</h2>
+<div class="pair parts-pair">
+  <figure class="render">
+    <img src="assets/img/parts/rudder.png" alt="The red rudder: a short 8 mm shaft with a swept blade" loading="lazy">
+    <figcaption><span class="sw c-rudder"></span>Rudder</figcaption>
+  </figure>
+  <figure class="render">
+    <img src="assets/img/parts/side-fin.png" alt="The blue side fin: an 8 mm shaft and a flat blade with an angled tip" loading="lazy">
+    <figcaption><span class="sw c-fin"></span>Side fin, one per side</figcaption>
+  </figure>
+</div>
+<p>The rudder stands on top of the body on its own servo. It turns 45° to the left or right and returns to centre when the button is released. With the tail running, this turns the fish.</p>
+<p>The two side fins sit on servos at the sides of the body. They tilt together, 35° up or down from level, to point the fish up or down. The code sends the two servos opposite angles (1790 µs and 1210 µs), which is what two mirrored servos need to move both fins the same way.</p>
+
+<h2 id="body">Body</h2>
+<p>The body is an egg-shaped shell, 130 mm across and 224 mm long, cut flat at the tail end. It is printed as two halves that meet on a flat face along the middle. Each half has a long pocket for the electronics: the Arduino UNO, relay, switch, two cells, motor and the three servos. Windows in the top half let the servo shafts reach the rudder and fins. A small tab on each half holds the pins of the link bars, and a notch where the halves meet lets the crank rod out.</p>
+
+<figure class="render">
+  <img src="assets/img/body-open.png" alt="Both body halves laid open, showing the long internal pockets, with the tail mechanism fitted to the bottom half" loading="lazy">
+  <figcaption>Both halves opened flat, with the crank rod, yoke and lower link bar in place.</figcaption>
+</figure>
+
+<div class="pair">
+  <figure>
+    <img src="assets/img/photos/inventor-assembly-transparent.png" alt="Inventor screenshot with a transparent top half, showing the cells, motor, relay, switch, Arduino and servos inside the body" loading="lazy">
+    <figcaption>Inventor assembly with the top half made transparent, showing where the electronics sit.</figcaption>
+  </figure>
+  <figure>
+    <img src="assets/img/photos/inventor-assembly.png" alt="Inventor screenshot of the closed body with the tail frame and the 224 mm length dimension" loading="lazy">
+    <figcaption>Closed body with the tail frame. Overall length 224 mm.</figcaption>
+  </figure>
+</div>
+
+<h2 id="parts">Parts</h2>
+<div class="table-scroll">
+<table>
+  <thead><tr><th>Part</th><th>Qty</th><th>Size</th><th>What it does</th><th>File</th></tr></thead>
+  <tbody>
+    <tr><td><span class="sw c-body"></span>Body, top half</td><td>1</td><td>234 × 130 × 65 mm</td><td>Upper shell with servo windows and a tail tab</td><td><a class="dl" href="cad/body-top.stl" download>STL</a></td></tr>
+    <tr><td><span class="sw c-body"></span>Body, bottom half</td><td>1</td><td>234 × 130 × 65 mm</td><td>Lower shell with the electronics pocket and a tail tab</td><td><a class="dl" href="cad/body-bottom.stl" download>STL</a></td></tr>
+    <tr><td><span class="sw c-rod"></span>Crank rod</td><td>1</td><td>6 mm rod, 18 mm throw, 70 mm long</td><td>Turns with the motor and drives the yoke</td><td><a class="dl" href="cad/tail-crank-rod.stl" download>STL</a></td></tr>
+    <tr><td><span class="sw c-yoke"></span>Slotted yoke</td><td>1</td><td>73 × 15 × 15 mm, slot 47 × 12 mm</td><td>Turns the crank's circle into a side-to-side swing</td><td><a class="dl" href="cad/tail-yoke.stl" download>STL</a></td></tr>
+    <tr><td><span class="sw c-bar"></span>Link bar</td><td>2</td><td>60 mm long, 4 mm pins 50 mm apart</td><td>Hangs the yoke from the body tabs</td><td><a class="dl" href="cad/tail-link-bar.stl" download>STL</a></td></tr>
+    <tr><td><span class="sw c-rudder"></span>Rudder</td><td>1</td><td>8 mm shaft, 30 mm tall</td><td>Steers left and right</td><td><a class="dl" href="cad/rudder.stl" download>STL</a></td></tr>
+    <tr><td><span class="sw c-fin"></span>Side fin</td><td>2</td><td>8 mm shaft, 70 mm long, 22 mm wide</td><td>Tilts the fish up and down</td><td><a class="dl" href="cad/side-fin.stl" download>STL</a></td></tr>
+  </tbody>
+</table>
+</div>
+<p>The motor, cells, Arduino UNO, relay, switch and servos are bought parts. They appear in the Inventor screenshots above but not in the printed parts list.</p>
+
+<div class="trio">
+  <figure class="render"><img src="assets/img/view-side.png" alt="Side view of the assembled fish" loading="lazy"><figcaption>Side</figcaption></figure>
+  <figure class="render"><img src="assets/img/view-top.png" alt="Top view of the assembled fish" loading="lazy"><figcaption>Top</figcaption></figure>
+  <figure class="render"><img src="assets/img/view-rear.png" alt="Rear view of the assembled fish showing the yoke and crank rod" loading="lazy"><figcaption>Rear</figcaption></figure>
+</div>

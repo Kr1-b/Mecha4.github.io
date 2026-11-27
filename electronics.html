@@ -1,0 +1,72 @@
+---
+title: Electronics
+layout: default
+key: electronics
+description: How the Mecha4 robotic fish is controlled - phone gamepad, ESP32, HC-12 radio, Arduino UNO, relay and servos, with the button map and failsafe.
+---
+
+<h1 class="page-title">Electronics</h1>
+<p class="lede">The fish is driven from a phone. Each button press becomes a single letter that travels by Bluetooth and then by radio to the Arduino inside the fish.</p>
+
+<h2 id="chain">From button to fin</h2>
+<ol class="chain">
+  <li><b>Phone</b><span>Dabble app in gamepad mode, paired with "RoboticFish" over Bluetooth.</span></li>
+  <li><b>ESP32</b><span>Reads the buttons every 20 ms and sends a letter only when a button changes.</span></li>
+  <li><b>HC-12 radio</b><span>433 MHz serial link at 9600 baud, ESP32 pins 16 and 17.</span></li>
+  <li><b>Arduino UNO</b><span>Inside the fish. Receives on pins 8 and 9 and acts on each letter.</span></li>
+  <li><b>Motor and servos</b><span>Relay on pin 4 for the tail motor. Servos on pin 3 (rudder), 5 and 6 (fins).</span></li>
+</ol>
+
+<h2 id="buttons">What each button does</h2>
+<div class="table-scroll">
+<table>
+  <thead><tr><th>Button</th><th>Letter sent</th><th>The fish</th><th>Servo signal</th></tr></thead>
+  <tbody>
+    <tr><td><kbd>Up</kbd> held / released</td><td><code>F</code> / <code>S</code></td><td><span class="sw c-yoke"></span>Tail motor on / off</td><td>Relay, active-low</td></tr>
+    <tr><td><kbd>Left</kbd> held</td><td><code>L</code></td><td><span class="sw c-rudder"></span>Rudder turns left</td><td>1125 µs, about 45°</td></tr>
+    <tr><td><kbd>Right</kbd> held</td><td><code>R</code></td><td><span class="sw c-rudder"></span>Rudder turns right</td><td>1875 µs, about 135°</td></tr>
+    <tr><td><kbd>Left</kbd> or <kbd>Right</kbd> released</td><td><code>C</code></td><td><span class="sw c-rudder"></span>Rudder back to centre</td><td>1500 µs, 90°</td></tr>
+    <tr><td><kbd>Circle</kbd> held</td><td><code>U</code></td><td><span class="sw c-fin"></span>Fins tilt up</td><td>Left 1790 µs, right 1210 µs</td></tr>
+    <tr><td><kbd>Cross</kbd> held</td><td><code>D</code></td><td><span class="sw c-fin"></span>Fins tilt down</td><td>Left 1210 µs, right 1790 µs</td></tr>
+    <tr><td><kbd>Circle</kbd> or <kbd>Cross</kbd> released</td><td><code>N</code></td><td><span class="sw c-fin"></span>Fins back to level</td><td>1500 µs</td></tr>
+    <tr><td>Automatic, every 0.5 s</td><td><code>H</code></td><td>Heartbeat, nothing moves</td><td>&nbsp;</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h2 id="failsafe">Failsafe</h2>
+<p>Every letter the UNO receives, including the heartbeat, restarts a 1.5 second timer. If the timer runs out because the radio link has dropped, the UNO switches the motor off and puts all three servos back to centre. When letters start arriving again, it carries on.</p>
+<pre class="code-block"><code>// uno_fish_code.ino
+if (!failsafeTriggered &amp;&amp; (millis() - lastSignalTime &gt; FAILSAFE_TIMEOUT)) {
+  centerAllAndStop();          // relay off, servos to 1500 us
+  failsafeTriggered = true;
+}</code></pre>
+
+<div class="note">
+  <p><strong>Two things to test in water.</strong> Radio at 433 MHz only travels a short way through water, so the fish may need to stay near the surface with its antenna clear. And because the ESP32 sends each letter once, a lost <code>S</code> would leave the motor running while heartbeats keep the failsafe happy. Sending the current state with every heartbeat would close that gap.</p>
+</div>
+
+<h2 id="libraries">Libraries</h2>
+<ul>
+  <li><strong>ESP32:</strong> <a href="https://github.com/STEMpedia/DabbleESP32">DabbleESP32</a> for the phone gamepad, and the built-in <code>Serial2</code> for the HC-12.</li>
+  <li><strong>UNO:</strong> <a href="https://github.com/PaulStoffregen/AltSoftSerial">AltSoftSerial</a> for the HC-12 and ServoTimer2Plus for the servos. AltSoftSerial uses Timer1, so the servos run on Timer2 to avoid a clash with the standard Servo library.</li>
+</ul>
+
+<h2 id="code">Code</h2>
+<p><a class="dl" href="code/esp_fish_code.ino" download>esp_fish_code.ino</a> runs on the ESP32 transmitter. <a class="dl" href="code/uno_fish_code.ino" download>uno_fish_code.ino</a> runs on the Arduino UNO inside the fish.</p>
+
+<h2 id="bench">Bench test</h2>
+<div class="pair">
+  <figure>
+    <video controls muted playsinline preload="none" poster="assets/video/bench-test-1.jpg">
+      <source src="assets/video/bench-test-1.mp4" type="video/mp4">
+    </video>
+    <figcaption>Driving the servos from the phone gamepad.</figcaption>
+  </figure>
+  <figure>
+    <video controls muted playsinline preload="none" poster="assets/video/bench-test-2.jpg">
+      <source src="assets/video/bench-test-2.mp4" type="video/mp4">
+    </video>
+    <figcaption>Second bench run on the lab power supply.</figcaption>
+  </figure>
+</div>

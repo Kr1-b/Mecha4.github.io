@@ -1,3 +1,5 @@
-theme: jekyll-theme-cayman
-title: Mecha4 – Robotic Fish
-description: MEC 482 Mechatronics, Abu Dhabi University
+title: Mecha4 robotic fish
+description: A 3D-printed robotic fish for MEC 482 Mechatronics at Abu Dhabi University. One motor wags the tail, a rudder steers and two side fins set the depth.
+markdown: kramdown
+exclude:
+  - README.md

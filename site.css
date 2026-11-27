@@ -1,0 +1,199 @@
+/* Mecha4 robotic fish
+   Pool-tile aqua for the page, deep water ink for text, and the part colours
+   from the CAD renders (yoke orange, link teal, rudder red, fin blue) used as a
+   colour code everywhere a part is named. */
+
+:root {
+  --paper: #eef6f5;       /* page */
+  --tile: #f9fcfc;        /* raised surfaces */
+  --grout: #cfe3e2;       /* tile grid lines, rules */
+  --ink: #0f2a33;
+  --ink-2: #4a6670;
+  --link: #9a4c06;        /* yoke orange, darkened for text */
+  --yoke: #ef901d;
+  --bar: #1f8f95;
+  --rudder: #d6473a;
+  --fin: #3569cc;
+  --rod: #7c858f;
+  --body: #9fb3c3;
+  --deep: #0f2a33;        /* header band */
+  --on-deep: #e6f2f1;
+
+  --display: "Barlow Semi Condensed", "Arial Narrow", system-ui, sans-serif;
+  --text: "Source Serif 4", Georgia, serif;
+  --measure: 66ch;
+  --r-sm: 4px;
+  --r-lg: 14px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0c1d22; --tile: #12282e; --grout: #1f3b42; --ink: #e2efee; --ink-2: #9db8bc;
+    --link: #f3a54b; --deep: #07151a; --on-deep: #e2efee;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #0c1d22; --tile: #12282e; --grout: #1f3b42; --ink: #e2efee; --ink-2: #9db8bc;
+  --link: #f3a54b; --deep: #07151a; --on-deep: #e2efee;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--text);
+  font-size: 1.125rem;
+  line-height: 1.65;
+  font-optical-sizing: auto;
+}
+img, video, svg { display: block; max-width: 100%; height: auto; }
+a { color: var(--link); text-underline-offset: 3px; text-decoration-thickness: 1px; }
+a:hover { text-decoration-thickness: 2px; }
+:focus-visible { outline: 3px solid var(--yoke); outline-offset: 2px; border-radius: 2px; }
+
+.container { width: 100%; max-width: 1140px; margin: 0 auto; padding: 0 16px; }
+@media (min-width: 760px) { .container { padding: 0 32px; } }
+
+.skip { position: absolute; left: -9999px; }
+.skip:focus { left: 16px; top: 8px; z-index: 10; background: var(--tile); padding: 6px 10px; }
+
+/* ---------- header ---------- */
+.site-header { background: var(--deep); color: var(--on-deep); }
+.bar { display: flex; align-items: center; justify-content: space-between; min-height: 60px; gap: 16px; flex-wrap: wrap; }
+.brand {
+  display: inline-flex; align-items: center; gap: 10px;
+  color: var(--on-deep); text-decoration: none;
+  font-family: var(--display); font-weight: 700; font-size: 1.45rem; letter-spacing: 0.01em;
+  --paper: var(--deep);
+}
+.brand svg { width: 34px; color: var(--yoke); }
+.nav-toggle {
+  display: none; font: 600 1rem var(--display); color: var(--on-deep);
+  background: transparent; border: 1px solid #3c5b64; border-radius: var(--r-sm); padding: 6px 12px; cursor: pointer;
+}
+#site-nav ul { display: flex; gap: 4px; list-style: none; margin: 0; padding: 0; }
+#site-nav a {
+  display: block; padding: 8px 12px; border-radius: var(--r-sm);
+  color: var(--on-deep); text-decoration: none;
+  font-family: var(--display); font-weight: 500; font-size: 1.08rem;
+}
+#site-nav a:hover { background: #1d3d47; }
+#site-nav a[aria-current="page"] { box-shadow: inset 0 -3px 0 var(--yoke); border-radius: 0; }
+@media (max-width: 720px) {
+  .nav-toggle { display: inline-block; }
+  #site-nav { flex-basis: 100%; display: none; padding-bottom: 12px; }
+  #site-nav.open { display: block; }
+  #site-nav ul { flex-direction: column; }
+}
+
+/* ---------- page flow ---------- */
+.page { padding-top: 40px; padding-bottom: 72px; }
+.page > :where(p, ul, ol, dl, h2, h3, h4, blockquote, .note) { max-width: var(--measure); }
+.page > :where(table) { max-width: 860px; }
+
+h1, h2, h3, h4 { font-family: var(--display); line-height: 1.08; color: var(--ink); }
+h1 { font-weight: 700; font-size: clamp(3rem, 9vw, 6.2rem); letter-spacing: -0.015em; margin: 0 0 0.15em; }
+h2 { font-weight: 700; font-size: clamp(1.8rem, 4vw, 2.5rem); margin: 2.2em 0 0.45em; }
+h3 { font-weight: 600; font-size: 1.45rem; margin: 1.8em 0 0.35em; }
+h4 { font-weight: 600; font-size: 1.15rem; margin: 1.4em 0 0.3em; }
+p, ul, ol { margin: 0 0 1em; }
+li { margin-bottom: 0.3em; }
+.page-title { margin-bottom: 0.2em; font-size: clamp(2.6rem, 7vw, 4.6rem); }
+.lede { font-size: 1.3rem; line-height: 1.5; color: var(--ink-2); max-width: 56ch; }
+strong { font-weight: 600; }
+code { font-size: 0.9em; background: var(--tile); border: 1px solid var(--grout); border-radius: 3px; padding: 0.05em 0.3em; }
+
+/* ---------- hero (home) ---------- */
+.hero { display: grid; gap: 28px; align-items: start; }
+@media (min-width: 940px) { .hero { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 44px; } }
+.hero-lede { font-size: 1.32rem; line-height: 1.5; color: var(--ink); max-width: 34ch; }
+.facts { display: grid; grid-template-columns: auto 1fr; gap: 6px 18px; margin: 22px 0; font-family: var(--display); font-size: 1.12rem; }
+.facts dt { color: var(--ink-2); font-weight: 500; }
+.facts dd { margin: 0; font-weight: 600; }
+.course { font-size: 1rem; color: var(--ink-2); }
+
+/* the test tank: pool-tile grid behind the model */
+.tank {
+  margin: 0; border-radius: var(--r-lg); overflow: hidden;
+  border: 1px solid var(--grout);
+  background-color: var(--tile);
+  background-image:
+    linear-gradient(var(--grout) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grout) 1px, transparent 1px);
+  background-size: 28px 28px;
+  background-position: -1px -1px;
+}
+.tank model-viewer { width: 100%; height: clamp(320px, 52vw, 520px); --poster-color: transparent; background: transparent; }
+.tank figcaption { padding: 10px 16px 0; font-family: var(--display); font-size: 1rem; color: var(--ink-2); background: var(--tile); }
+
+/* part colour code */
+.legend { display: flex; flex-wrap: wrap; gap: 6px 16px; list-style: none; margin: 0; padding: 8px 16px 14px; background: var(--tile); font-family: var(--display); font-size: 1rem; }
+.legend li { margin: 0; }
+.sw { display: inline-block; width: 0.8em; height: 0.8em; border-radius: 2px; margin-right: 0.4em; vertical-align: -0.05em; background: var(--c); }
+.c-body { --c: var(--body); } .c-rod { --c: var(--rod); } .c-yoke { --c: var(--yoke); }
+.c-bar { --c: var(--bar); } .c-rudder { --c: var(--rudder); } .c-fin { --c: var(--fin); }
+
+/* ---------- figures ---------- */
+figure { margin: 28px 0; }
+figure img, figure video { border-radius: var(--r-sm); }
+.render img { background: var(--tile); border: 1px solid var(--grout); }
+figcaption { font-family: var(--display); font-size: 1rem; color: var(--ink-2); margin-top: 8px; max-width: 70ch; }
+.pair { display: grid; gap: 20px; margin: 28px 0; }
+@media (min-width: 760px) { .pair { grid-template-columns: 1fr 1fr; } .pair.wide-left { grid-template-columns: 3fr 2fr; } }
+.pair figure { margin: 0; }
+.pair > *, .trio > *, .hero > * { min-width: 0; }
+figure video { width: 100%; }
+.trio { display: grid; gap: 16px; margin: 28px 0; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+.trio figure { margin: 0; }
+
+/* ---------- tables ---------- */
+table { width: 100%; border-collapse: collapse; margin: 18px 0 28px; font-size: 1rem; }
+th, td { text-align: left; padding: 9px 12px 9px 0; border-bottom: 1px solid var(--grout); vertical-align: top; }
+th { font-family: var(--display); font-weight: 600; font-size: 1.05rem; border-bottom: 2px solid var(--ink); }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; padding-right: 0; }
+.table-scroll { overflow-x: auto; max-width: 100%; }
+kbd { font-family: var(--display); font-weight: 600; font-size: 0.95em; padding: 1px 7px; border: 1px solid var(--grout); border-bottom-width: 2px; border-radius: 4px; background: var(--tile); }
+
+/* ---------- signal chain (electronics) ---------- */
+.chain { list-style: none; counter-reset: step; display: grid; gap: 12px; padding: 0; margin: 24px 0 32px; }
+@media (min-width: 900px) { .chain { grid-template-columns: repeat(5, 1fr); gap: 0; } }
+.chain li { counter-increment: step; position: relative; margin: 0; padding: 14px 16px; background: var(--tile); border: 1px solid var(--grout); }
+@media (min-width: 900px) {
+  .chain li { border-right: none; }
+  .chain li:first-child { border-radius: var(--r-lg) 0 0 var(--r-lg); }
+  .chain li:last-child { border-right: 1px solid var(--grout); border-radius: 0 var(--r-lg) var(--r-lg) 0; }
+  .chain li + li::before { content: ""; position: absolute; left: -9px; top: 50%; width: 16px; height: 16px; background: var(--tile); border-top: 1px solid var(--grout); border-right: 1px solid var(--grout); transform: translateY(-50%) rotate(45deg); }
+}
+.chain b { display: block; font-family: var(--display); font-weight: 700; font-size: 1.25rem; }
+.chain b::before { content: counter(step) "  "; color: var(--link); }
+.chain span { display: block; font-size: 0.98rem; color: var(--ink-2); line-height: 1.45; }
+
+/* ---------- notes ---------- */
+.note { border-left: 4px solid var(--yoke); padding: 4px 0 4px 16px; margin: 20px 0; }
+.note p:last-child { margin-bottom: 0; }
+
+/* ---------- build log timeline ---------- */
+.log { list-style: none; padding: 0; margin: 32px 0; border-left: 2px solid var(--grout); }
+.log > li { position: relative; padding: 0 0 40px 28px; margin: 0; }
+.log > li::before { content: ""; position: absolute; left: -8px; top: 0.45em; width: 14px; height: 14px; border-radius: 50%; background: var(--paper); border: 3px solid var(--yoke); }
+.log > li.planned::before { border-color: var(--grout); }
+.log time, .log .when { display: block; font-family: var(--display); font-weight: 600; font-size: 1.05rem; color: var(--link); }
+.log h3 { margin-top: 0.15em; }
+.log p { max-width: var(--measure); }
+
+/* ---------- files ---------- */
+.dl { font-family: var(--display); font-weight: 600; }
+.code-block { background: var(--deep); color: var(--on-deep); border-radius: var(--r-sm); padding: 16px 18px; overflow-x: auto; font-size: 0.92rem; line-height: 1.5; max-width: 860px; }
+.code-block code { background: none; border: 0; padding: 0; color: inherit; }
+
+/* ---------- footer ---------- */
+.site-footer { border-top: 1px solid var(--grout); padding: 26px 0 40px; font-family: var(--display); color: var(--ink-2); }
+.site-footer p { margin: 0 0 4px; }
+
+@media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; } }
+
+/* width overrides for blocks that sit directly in the page flow */
+.page > .chain { max-width: none; }
+.page > .log { max-width: 900px; }
+.pair.parts-pair { max-width: 640px; }

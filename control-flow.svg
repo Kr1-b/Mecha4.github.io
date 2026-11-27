@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1000" viewBox="0 0 1800 1000" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#33566e"/></marker>
+  </defs>
+  <rect width="1800" height="1000" fill="#f4f7fa"/>
+  <text x="60" y="80" font-size="40" font-weight="700" fill="#14283c">How the robotic fish is controlled</text>
+  <text x="60" y="122" font-size="22" fill="#4a6376">Phone gamepad → ESP32 → HC-12 radio → Arduino UNO → relay + 3 servos</text>
+
+  <!-- stage 1 phone -->
+  <rect x="60" y="190" width="270" height="190" rx="22" fill="#ffffff" stroke="#33566e" stroke-width="3"/>
+  <text x="195" y="245" text-anchor="middle" font-size="28" font-weight="700" fill="#14283c">Phone</text>
+  <text x="195" y="285" text-anchor="middle" font-size="20" fill="#33566e">Dabble Gamepad app</text>
+  <text x="195" y="318" text-anchor="middle" font-size="18" fill="#5d7487">D-pad + Circle / Cross</text>
+  <text x="195" y="346" text-anchor="middle" font-size="18" fill="#5d7487">paired as “RoboticFish”</text>
+
+  <line x1="330" y1="285" x2="440" y2="285" stroke="#33566e" stroke-width="4" marker-end="url(#ah)"/>
+  <text x="385" y="262" text-anchor="middle" font-size="18" fill="#33566e">Bluetooth</text>
+
+  <!-- stage 2 ESP32 -->
+  <rect x="440" y="190" width="280" height="190" rx="22" fill="#ffffff" stroke="#33566e" stroke-width="3"/>
+  <text x="580" y="245" text-anchor="middle" font-size="28" font-weight="700" fill="#14283c">ESP32</text>
+  <text x="580" y="285" text-anchor="middle" font-size="20" fill="#33566e">transmitter</text>
+  <text x="580" y="318" text-anchor="middle" font-size="18" fill="#5d7487">reads buttons every 20 ms</text>
+  <text x="580" y="346" text-anchor="middle" font-size="18" fill="#5d7487">HC-12 on RX 16 / TX 17</text>
+
+  <line x1="720" y1="285" x2="900" y2="285" stroke="#33566e" stroke-width="4" stroke-dasharray="3 9" stroke-linecap="round" marker-end="url(#ah)"/>
+  <text x="810" y="258" text-anchor="middle" font-size="19" fill="#33566e">HC-12 radio</text>
+  <text x="810" y="318" text-anchor="middle" font-size="16" fill="#5d7487">433 MHz · 9600 baud</text>
+
+  <!-- stage 3 UNO -->
+  <rect x="900" y="190" width="300" height="190" rx="22" fill="#ffffff" stroke="#33566e" stroke-width="3"/>
+  <text x="1050" y="245" text-anchor="middle" font-size="28" font-weight="700" fill="#14283c">Arduino UNO</text>
+  <text x="1050" y="285" text-anchor="middle" font-size="20" fill="#33566e">receiver, inside the fish</text>
+  <text x="1050" y="318" text-anchor="middle" font-size="18" fill="#5d7487">HC-12 on pins 8 / 9</text>
+  <text x="1050" y="346" text-anchor="middle" font-size="18" fill="#5d7487">relay on 4, servos on 3 / 5 / 6</text>
+
+  <!-- outputs -->
+  <path d="M1200 285 H1265 V217 H1330" fill="none" stroke="#33566e" stroke-width="4" marker-end="url(#ah)"/>
+  <path d="M1200 285 H1265 V327 H1330" fill="none" stroke="#33566e" stroke-width="4" marker-end="url(#ah)"/>
+  <path d="M1200 285 H1265 V437 H1330" fill="none" stroke="#33566e" stroke-width="4" marker-end="url(#ah)"/>
+
+  <rect x="1330" y="172" width="420" height="90" rx="18" fill="#fdeedb" stroke="#d9801a" stroke-width="3"/>
+  <text x="1350" y="206" font-size="23" font-weight="700" fill="#14283c">Relay (pin 4, active-LOW)</text>
+  <text x="1350" y="240" font-size="20" fill="#6b4a1c">→ crank motor → tail wag on / off</text>
+
+  <rect x="1330" y="282" width="420" height="90" rx="18" fill="#fbe3e0" stroke="#d4483b" stroke-width="3"/>
+  <text x="1350" y="316" font-size="23" font-weight="700" fill="#14283c">Rudder servo (pin 3)</text>
+  <text x="1350" y="350" font-size="20" fill="#7a2f27">→ steers left / right</text>
+
+  <rect x="1330" y="392" width="420" height="90" rx="18" fill="#e3ecfb" stroke="#2f62c8" stroke-width="3"/>
+  <text x="1350" y="426" font-size="23" font-weight="700" fill="#14283c">Fin servos (pins 5 &amp; 6)</text>
+  <text x="1350" y="460" font-size="20" fill="#244a94">→ both side fins up / down</text>
+
+  <!-- command table -->
+  <text x="60" y="480" font-size="30" font-weight="700" fill="#14283c">What each button does</text>
+  <g font-size="21">
+    <rect x="60" y="505" width="1280" height="52" rx="10" fill="#dfe8ef"/>
+    <text x="84" y="539" font-weight="700" fill="#14283c">Gamepad input</text>
+    <text x="460" y="539" font-weight="700" fill="#14283c">Byte sent (1 char)</text>
+    <text x="660" y="539" font-weight="700" fill="#14283c">UNO action</text>
+    <text x="1130" y="539" font-weight="700" fill="#14283c">Servo pulse</text>
+
+    <g fill="#14283c">
+      <text x="84" y="602">UP held / released</text><text x="460" y="602">F / S</text><text x="660" y="602">relay ON / OFF → tail motor runs / stops</text><text x="1130" y="602" fill="#5d7487">—</text>
+      <text x="84" y="652">LEFT held</text><text x="460" y="652">L</text><text x="660" y="652">rudder swings left</text><text x="1130" y="652" fill="#5d7487">1125 µs (~45°)</text>
+      <text x="84" y="702">RIGHT held</text><text x="460" y="702">R</text><text x="660" y="702">rudder swings right</text><text x="1130" y="702" fill="#5d7487">1875 µs (~135°)</text>
+      <text x="84" y="752">LEFT / RIGHT released</text><text x="460" y="752">C</text><text x="660" y="752">rudder back to centre</text><text x="1130" y="752" fill="#5d7487">1500 µs (90°)</text>
+      <text x="84" y="802">Circle held</text><text x="460" y="802">U</text><text x="660" y="802">fins up (left servo 1790 µs, right 1210 µs)</text><text x="1130" y="802" fill="#5d7487">±35° from centre</text>
+      <text x="84" y="852">Cross held</text><text x="460" y="852">D</text><text x="660" y="852">fins down (left 1210 µs, right 1790 µs)</text><text x="1130" y="852" fill="#5d7487">±35° from centre</text>
+      <text x="84" y="902">Circle / Cross released</text><text x="460" y="902">N</text><text x="660" y="902">fins back to centre</text><text x="1130" y="902" fill="#5d7487">1500 µs (90°)</text>
+      <text x="84" y="952">(automatic, every 500 ms)</text><text x="460" y="952">H</text><text x="660" y="952">heartbeat – keeps the failsafe timer alive</text><text x="1130" y="952" fill="#5d7487">—</text>
+    </g>
+    <g stroke="#c9d6e0" stroke-width="1.5"><line x1="60" y1="620" x2="1340" y2="620"/><line x1="60" y1="670" x2="1340" y2="670"/><line x1="60" y1="720" x2="1340" y2="720"/><line x1="60" y1="770" x2="1340" y2="770"/><line x1="60" y1="820" x2="1340" y2="820"/><line x1="60" y1="870" x2="1340" y2="870"/><line x1="60" y1="920" x2="1340" y2="920"/></g>
+  </g>
+
+  <rect x="1380" y="540" width="380" height="330" rx="18" fill="#ffffff" stroke="#c9d6e0" stroke-width="2"/>
+  <text x="1402" y="582" font-size="22" font-weight="700" fill="#14283c">Safety logic</text>
+  <g font-size="18" fill="#33566e">
+    <text x="1402" y="620">• A byte is sent only when a button</text><text x="1402" y="644">  changes, plus a heartbeat (H).</text>
+    <text x="1402" y="684">• Every received byte resets the</text><text x="1402" y="708">  UNO's 1.5 s timer.</text>
+    <text x="1402" y="748">• Timer runs out: relay OFF and all</text><text x="1402" y="772">  servos to centre (1500 µs).</text>
+    <text x="1402" y="812">• Servos use Timer2 (ServoTimer2Plus),</text><text x="1402" y="836">  the HC-12 uses AltSoftSerial.</text>
+  </g>
+</svg>

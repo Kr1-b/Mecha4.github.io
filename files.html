@@ -1,0 +1,40 @@
+---
+title: Files
+layout: default
+key: files
+description: Download the STL parts and Arduino code for the Mecha4 robotic fish.
+---
+
+<h1 class="page-title">Files</h1>
+<p class="lede">STL files go straight into the slicer. The .ino files open in the Arduino IDE.</p>
+
+<h2 id="parts">Printed parts</h2>
+<div class="table-scroll"><table>
+  <thead><tr><th>File</th><th>Part</th><th>Print</th><th class="num">Size</th></tr></thead><tbody>
+    <tr><td><a class="dl" href="cad/body-top.stl" download>body-top.stl</a></td><td>Body, top half</td><td>1</td><td class="num">149 KB</td></tr>
+    <tr><td><a class="dl" href="cad/body-bottom.stl" download>body-bottom.stl</a></td><td>Body, bottom half</td><td>1</td><td class="num">153 KB</td></tr>
+    <tr><td><a class="dl" href="cad/tail-crank-rod.stl" download>tail-crank-rod.stl</a></td><td>Crank rod</td><td>1</td><td class="num">45 KB</td></tr>
+    <tr><td><a class="dl" href="cad/tail-yoke.stl" download>tail-yoke.stl</a></td><td>Slotted yoke</td><td>1</td><td class="num">27 KB</td></tr>
+    <tr><td><a class="dl" href="cad/tail-link-bar.stl" download>tail-link-bar.stl</a></td><td>Link bar</td><td>2</td><td class="num">19 KB</td></tr>
+    <tr><td><a class="dl" href="cad/rudder.stl" download>rudder.stl</a></td><td>Rudder</td><td>1</td><td class="num">13 KB</td></tr>
+    <tr><td><a class="dl" href="cad/side-fin.stl" download>side-fin.stl</a></td><td>Side fin</td><td>2</td><td class="num">10 KB</td></tr>
+    <tr><td><a class="dl" href="cad/fish-print-assembly.stl" download>fish-print-assembly.stl</a></td><td>All parts laid out for printing</td><td>1 plate</td><td class="num">434 KB</td></tr>
+  </tbody></table></div>
+<p>Units are millimetres. The parts are exported in Inventor's coordinates, so lay them flat on the bed before slicing.</p>
+
+<h2 id="code">Arduino code</h2>
+<div class="table-scroll"><table>
+  <thead><tr><th>File</th><th>Runs on</th><th class="num">Size</th></tr></thead><tbody>
+    <tr><td><a class="dl" href="code/esp_fish_code.ino" download>esp_fish_code.ino</a></td><td>ESP32 transmitter: phone gamepad to HC-12 radio</td><td class="num">2 KB</td></tr>
+    <tr><td><a class="dl" href="code/uno_fish_code.ino" download>uno_fish_code.ino</a></td><td>Arduino UNO receiver: radio to relay and servos, with failsafe</td><td class="num">3 KB</td></tr>
+  </tbody></table></div>
+
+<h2 id="media">Model, images and diagrams</h2>
+<div class="table-scroll"><table>
+  <thead><tr><th>File</th><th>What it is</th><th class="num">Size</th></tr></thead><tbody>
+    <tr><td><a class="dl" href="assets/model/robotic-fish.glb" download>robotic-fish.glb</a></td><td>3D model with the tail animation (opens in Windows 3D Viewer or any glTF viewer)</td><td class="num">164 KB</td></tr>
+    <tr><td><a class="dl" href="assets/img/control-flow.png" download>control-flow.png</a></td><td>Control diagram and button table, for slides</td><td class="num">282 KB</td></tr>
+    <tr><td><a class="dl" href="assets/img/parts-overview.png" download>parts-overview.png</a></td><td>All parts on one sheet</td><td class="num">336 KB</td></tr>
+    <tr><td><a class="dl" href="assets/video/tail-wag.mp4" download>tail-wag.mp4</a></td><td>Tail animation, one crank turn</td><td class="num">259 KB</td></tr>
+  </tbody></table></div>
+
